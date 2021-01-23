@@ -1,6 +1,8 @@
 package com.ricardohernani.projeto_gpmo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,8 @@ public class Paciente implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Integer registro;
+	
+	private List<Procedimento> procedimentos = new ArrayList<>();
 	
 	
 	public Paciente() {
@@ -45,6 +49,15 @@ public class Paciente implements Serializable {
 
 	public void setRegistro(Integer registro) {
 		this.registro = registro;
+	}
+	
+	public List<Procedimento> getProcedimentos() {
+		return procedimentos;
+	}
+
+
+	public void setProcedimentos(List<Procedimento> procedimentos) {
+		this.procedimentos = procedimentos;
 	}
 
 	//Conferir se é necessário comparar por registro ou só por id
@@ -80,6 +93,9 @@ public class Paciente implements Serializable {
 			return false;
 		return true;
 	}
+
+
+	
 	
 	
 	
