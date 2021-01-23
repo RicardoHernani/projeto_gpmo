@@ -1,29 +1,29 @@
 package com.ricardohernani.projeto_gpmo.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
+import com.ricardohernani.projeto_gpmo.services.PacienteService;
 
 @RestController
 @RequestMapping(value="/pacientes")
 public class PacienteResource {
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public List<Paciente> listar() {
+	@Autowired
+	private PacienteService service;	
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) {
+		Paciente obj = service.buscar(id);
+		return ResponseEntity.ok().body(obj);
 		
-		Paciente pcte1 = new Paciente(1, 12345678);
-		Paciente pcte2 = new Paciente(2, 11001100);
 		
-		List<Paciente> lista = new ArrayList<>();
-		lista.add(pcte1);
-		lista.add(pcte2);
 		
-		return lista;
 	}
 
 }
