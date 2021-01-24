@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ricardohernani.projeto_gpmo.domain.Procedimento;
-import com.ricardohernani.projeto_gpmo.services.ProcedimentoService;
+import com.ricardohernani.projeto_gpmo.domain.Referencia;
+import com.ricardohernani.projeto_gpmo.services.ReferenciaService;
 
 @RestController
-@RequestMapping(value="/procedimentos")
-public class ProcedimentoResource {
-	
+@RequestMapping(value="/referencias")
+public class ReferenciaResource {
+		
 	@Autowired
-	private ProcedimentoService service;	
-	
+	private ReferenciaService service;	
+		
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-		Procedimento obj = service.buscar(id);
+		Referencia obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
-
 }

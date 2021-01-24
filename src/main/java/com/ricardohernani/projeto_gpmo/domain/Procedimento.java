@@ -18,7 +18,7 @@ import com.ricardohernani.projeto_gpmo.domain.enums.TipoProcedimento;
 public class Procedimento implements Serializable {	
 	private static final long serialVersionUID = 1L;
 	
-	@Id												//Verificar se nâo precisa colocar @data
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Date data;
