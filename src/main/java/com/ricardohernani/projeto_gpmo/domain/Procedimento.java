@@ -1,14 +1,14 @@
 package com.ricardohernani.projeto_gpmo.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Procedimento implements Serializable {	
@@ -21,19 +21,24 @@ public class Procedimento implements Serializable {
 	private Boolean tipo;
 	private Boolean caracteristica;
 	
-	//Não é necessario criar uma lista aqui?????
+	@ManyToOne
+	@JoinColumn(name="paciente_id")
+	private Paciente paciente;
+	
+	
 	
 	public Procedimento() {
 	}
 
-	public Procedimento(Integer id, Date data, Boolean tipo, Boolean caracteristica) {
+	public Procedimento(Integer id, Date data, Boolean tipo, Boolean caracteristica, Paciente paciente) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.tipo = tipo;
 		this.caracteristica = caracteristica;
+		this.paciente = paciente;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -65,12 +70,17 @@ public class Procedimento implements Serializable {
 	public void setCaracteristica(Boolean caracteristica) {
 		this.caracteristica = caracteristica;
 	}
-	
-	
-	
 
-//Conferir se não precisa de gerar hash e equals para caracteristica e tipo
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
 	
+	//Conferir se não precisa de gerar hash e equals para caracteristica e tipo
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,5 +111,6 @@ public class Procedimento implements Serializable {
 			return false;
 		return true;
 	}
+	
 	
 }

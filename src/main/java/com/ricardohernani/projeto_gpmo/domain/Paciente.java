@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Paciente implements Serializable {
@@ -18,12 +19,12 @@ public class Paciente implements Serializable {
 	private Integer id;
 	private Integer registro;
 	
+	@OneToMany(mappedBy="paciente")
 	private List<Procedimento> procedimentos = new ArrayList<>();
 	
 	
 	public Paciente() {
 	}
-
 
 	public Paciente(Integer id, Integer registro) {
 		super();
@@ -94,9 +95,6 @@ public class Paciente implements Serializable {
 		return true;
 	}
 
-
-	
-	
 	
 	
 }
