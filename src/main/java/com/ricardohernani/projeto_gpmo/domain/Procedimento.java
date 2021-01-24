@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Procedimento implements Serializable {	
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,7 @@ public class Procedimento implements Serializable {
 	private Boolean tipo;
 	private Boolean caracteristica;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="paciente_id")
 	private Paciente paciente;
