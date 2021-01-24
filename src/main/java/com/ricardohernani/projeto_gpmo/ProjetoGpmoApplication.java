@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
 import com.ricardohernani.projeto_gpmo.domain.Procedimento;
+import com.ricardohernani.projeto_gpmo.domain.enums.PremioProcedimento;
+import com.ricardohernani.projeto_gpmo.domain.enums.TipoProcedimento;
 import com.ricardohernani.projeto_gpmo.repositories.PacienteRepository;
 import com.ricardohernani.projeto_gpmo.repositories.ProcedimentoRepository;
 import com.ricardohernani.projeto_gpmo.repositories.ReferenciaRepository;
@@ -41,10 +43,10 @@ public class ProjetoGpmoApplication implements CommandLineRunner {
 		Paciente pcte1 = new Paciente(null, 32144881);
 		Paciente pcte2 = new Paciente(null, 12345678);
 		
-		Procedimento proc1 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), true, true, pcte1);
-		Procedimento proc2 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), false, true, pcte1);
-		Procedimento proc3 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), true, true, pcte1);
-		Procedimento proc4 = new Procedimento(null, new java.sql.Date(sdf.parse("23/01/2021").getTime()), true, false, pcte2);
+		Procedimento proc1 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), TipoProcedimento.PRINCIPAL, PremioProcedimento.DINHEIRO, pcte1);
+		Procedimento proc2 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), TipoProcedimento.SECUNDARIO, PremioProcedimento.DINHEIRO, pcte1);
+		Procedimento proc3 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), TipoProcedimento.PRINCIPAL, PremioProcedimento.DINHEIRO, pcte1);
+		Procedimento proc4 = new Procedimento(null, new java.sql.Date(sdf.parse("23/01/2021").getTime()), TipoProcedimento.PRINCIPAL, PremioProcedimento.TAREFA_BASICA, pcte2);
 		
 		pcte1.getProcedimentos().addAll(Arrays.asList(proc1, proc2, proc3));
 		pcte2.getProcedimentos().addAll(Arrays.asList(proc4));

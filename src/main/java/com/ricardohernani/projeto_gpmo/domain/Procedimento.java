@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.ricardohernani.projeto_gpmo.domain.enums.PremioProcedimento;
+import com.ricardohernani.projeto_gpmo.domain.enums.TipoProcedimento;
 
 @Entity
 public class Procedimento implements Serializable {	
@@ -20,8 +22,8 @@ public class Procedimento implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Date data;
-	private Boolean tipo;
-	private Boolean caracteristica;
+	private Integer tipo;
+	private Integer premio;
 	
 	@JsonBackReference
 	@ManyToOne
@@ -33,12 +35,12 @@ public class Procedimento implements Serializable {
 	public Procedimento() {
 	}
 
-	public Procedimento(Integer id, Date data, Boolean tipo, Boolean caracteristica, Paciente paciente) {
+	public Procedimento(Integer id, Date data, TipoProcedimento tipo, PremioProcedimento premio, Paciente paciente) {
 		super();
 		this.id = id;
 		this.data = data;
-		this.tipo = tipo;
-		this.caracteristica = caracteristica;
+		this.tipo = tipo.getCod();
+		this.premio = premio.getCod2();
 		this.paciente = paciente;
 	}
 	
@@ -58,20 +60,20 @@ public class Procedimento implements Serializable {
 		this.data = data;
 	}
 
-	public Boolean getTipo() {
-		return tipo;
+	public TipoProcedimento getTipo() {
+		return TipoProcedimento.toEnum(tipo);
 	}
 
-	public void setTipo(Boolean tipo) {
-		this.tipo = tipo;
+	public void setTipo(TipoProcedimento tipo) {
+		this.tipo = tipo.getCod();
 	}
 
-	public Boolean getCaracteristica() {
-		return caracteristica;
+	public PremioProcedimento getPremio() {
+		return PremioProcedimento.toEnum(premio);
 	}
 
-	public void setCaracteristica(Boolean caracteristica) {
-		this.caracteristica = caracteristica;
+	public void setPremio(PremioProcedimento premio) {
+		this.premio = premio.getCod2();
 	}
 
 	public Paciente getPaciente() {
@@ -82,7 +84,6 @@ public class Procedimento implements Serializable {
 		this.paciente = paciente;
 	}
 
-	
 	//Conferir se não precisa de gerar hash e equals para caracteristica e tipo
 	@Override
 	public int hashCode() {
