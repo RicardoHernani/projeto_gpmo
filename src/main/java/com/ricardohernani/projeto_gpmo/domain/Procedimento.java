@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ricardohernani.projeto_gpmo.domain.enums.PremioProcedimento;
 import com.ricardohernani.projeto_gpmo.domain.enums.TipoProcedimento;
 
@@ -21,11 +22,14 @@ public class Procedimento implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date data;
+	
 	private Integer tipo;
 	private Integer premio;
 	
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="paciente_id")
 	private Paciente paciente;
