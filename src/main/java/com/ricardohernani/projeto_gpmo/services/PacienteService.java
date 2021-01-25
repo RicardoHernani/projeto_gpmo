@@ -20,4 +20,9 @@ public class PacienteService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Paciente.class.getName()));
 	}
+	
+	public Paciente insert(Paciente obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
 }
