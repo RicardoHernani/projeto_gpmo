@@ -22,7 +22,7 @@ public class PacienteResource {
 	private PacienteService service;	
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<Paciente> find(@PathVariable Integer id) {
 		Paciente obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -35,6 +35,12 @@ public class PacienteResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> uptade(@RequestBody Paciente obj, @PathVariable Integer id){
+		obj.setId(id);
+		obj =  service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
 	
 	
 
