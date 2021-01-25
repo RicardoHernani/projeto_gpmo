@@ -30,4 +30,9 @@ public class PacienteService {
 		buscar(obj.getId());
 		return repo.save(obj);
 	}
+	
+	public void delete(Integer id) {
+		buscar(id);
+		repo.deleteById(id);
+	}
 }
