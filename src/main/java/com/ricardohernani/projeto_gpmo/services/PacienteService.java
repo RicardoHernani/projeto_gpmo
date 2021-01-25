@@ -1,5 +1,6 @@
 package com.ricardohernani.projeto_gpmo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class PacienteService {
 	public void delete(Integer id) {
 		buscar(id);
 		repo.deleteById(id);
+	}
+	
+	public List<Paciente> findAll() {
+		return repo.findAll();
 	}
 }
