@@ -30,18 +30,24 @@ public class Procedimento implements Serializable {
 	@JoinColumn(name="paciente_id")
 	private Paciente paciente;
 	
+	@ManyToOne
+	@JoinColumn(name="referencia_id")
+	private Referencia referencia;
+	
 	
 	
 	public Procedimento() {
 	}
 
-	public Procedimento(Integer id, Date data, TipoProcedimento tipo, PremioProcedimento premio, Paciente paciente) {
+	public Procedimento(Integer id, Date data, TipoProcedimento tipo, PremioProcedimento premio, Paciente paciente,
+						Referencia referencia) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.tipo = tipo.getCod();
 		this.premio = premio.getCod2();
 		this.paciente = paciente;
+		this.referencia = referencia;
 	}
 	
 	public Integer getId() {
@@ -83,7 +89,16 @@ public class Procedimento implements Serializable {
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
+	
+	public Referencia getReferencia() {
+		return referencia;
+	}
+	
+	public void setReferencia(Referencia referencia) {
+		this.referencia = referencia;
+	}
 
+	
 	//Conferir se não precisa de gerar hash e equals para caracteristica e tipo
 	@Override
 	public int hashCode() {
