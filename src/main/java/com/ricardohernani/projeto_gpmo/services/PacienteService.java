@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
@@ -16,7 +19,7 @@ public class PacienteService {
 	@Autowired
 	private PacienteRepository repo;
 	
-	public Paciente buscar(Integer id) {
+	public Paciente find(Integer id) {
 		Optional<Paciente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Paciente.class.getName()));
@@ -28,16 +31,25 @@ public class PacienteService {
 	}
 	
 	public Paciente update(Paciente obj) {
-		buscar(obj.getId());
+		find(obj.getId());
 		return repo.save(obj);
 	}
 	
 	public void delete(Integer id) {
-		buscar(id);
+		find(id);
 		repo.deleteById(id);
 	}
 	
 	public List<Paciente> findAll() {
 		return repo.findAll();
 	}
+	
+	public Page<Paciente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		return repo.findAll(pageRequest);
+	}
+	
+	
+	
+	
 }

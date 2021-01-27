@@ -15,7 +15,7 @@ public class ProcedimentoService {
 	@Autowired
 	private ProcedimentoRepository repo;
 	
-	public Procedimento buscar(Integer id) {
+	public Procedimento find(Integer id) {
 		Optional<Procedimento> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Procedimento.class.getName()));

@@ -19,7 +19,7 @@ public class ProcedimentoResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Procedimento> find(@PathVariable Integer id) {
-		Procedimento obj = service.buscar(id);
+		Procedimento obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
