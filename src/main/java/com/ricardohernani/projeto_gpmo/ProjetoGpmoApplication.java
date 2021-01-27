@@ -46,13 +46,13 @@ public class ProjetoGpmoApplication implements CommandLineRunner {
 		Referencia ref4 = new Referencia(30202094, "Palatoplastia com enxerto ósseo", 33.33, 717.27);
 		
 		
-		Paciente pcte1 = new Paciente(null, 32144881);
-		Paciente pcte2 = new Paciente(null, 12345678);
+		Paciente pcte1 = new Paciente(null, 32144881, new java.sql.Date(sdf.parse("29/12/2020").getTime()));
+		Paciente pcte2 = new Paciente(null, 12345678, new java.sql.Date(sdf.parse("23/01/2021").getTime()));
 		
-		Procedimento proc1 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), TipoProcedimento.PRINCIPAL, PremioProcedimento.DINHEIRO, pcte1, ref1);
-		Procedimento proc2 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), TipoProcedimento.SECUNDARIO, PremioProcedimento.DINHEIRO, pcte1, ref2);
-		Procedimento proc3 = new Procedimento(null, new java.sql.Date(sdf.parse("29/12/2020").getTime()), TipoProcedimento.PRINCIPAL, PremioProcedimento.DINHEIRO, pcte1, ref2);
-		Procedimento proc4 = new Procedimento(null, new java.sql.Date(sdf.parse("23/01/2021").getTime()), TipoProcedimento.PRINCIPAL, PremioProcedimento.TAREFA_BASICA, pcte2, ref3);
+		Procedimento proc1 = new Procedimento(null, TipoProcedimento.PRINCIPAL, PremioProcedimento.DINHEIRO, pcte1, ref1);
+		Procedimento proc2 = new Procedimento(null, TipoProcedimento.SECUNDARIO, PremioProcedimento.DINHEIRO, pcte1, ref2);
+		Procedimento proc3 = new Procedimento(null, TipoProcedimento.PRINCIPAL, PremioProcedimento.DINHEIRO, pcte1, ref2);
+		Procedimento proc4 = new Procedimento(null, TipoProcedimento.PRINCIPAL, PremioProcedimento.TAREFA_BASICA, pcte2, ref3);
 		
 		pcte1.getProcedimentos().addAll(Arrays.asList(proc1, proc2, proc3));
 		pcte2.getProcedimentos().addAll(Arrays.asList(proc4));

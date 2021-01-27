@@ -43,9 +43,6 @@ public class PacienteResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	//Não deleta se houver pacientes com procedimentos associados tem que
-	//implementar isso - Aula 36
-	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
@@ -55,6 +52,7 @@ public class PacienteResource {
 	
 	//Implementação sem DTO(filtro de exibição) - ver a necessidade para Paciente - aula 37
 	//Não implementado a paginação
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Paciente>> findAll() {
 		List<Paciente> list = service.findAll();
