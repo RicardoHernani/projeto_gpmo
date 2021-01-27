@@ -2,6 +2,8 @@ package com.ricardohernani.projeto_gpmo.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
+import com.ricardohernani.projeto_gpmo.dto.PacienteDTO;
 import com.ricardohernani.projeto_gpmo.services.PacienteService;
 
 @RestController
@@ -50,14 +53,23 @@ public class PacienteResource {
 	}
 	
 	
+	//Implementação com DTO
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<List<PacienteDTO>> findAll() {
+		List<Paciente> list = service.findAll();
+		List<PacienteDTO> listDto = list.stream().map(obj -> new PacienteDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
+	}
+	
+	
 	//Implementação sem DTO(filtro de exibição) - ver a necessidade para Paciente - aula 37
 	//Não implementado a paginação
 	
-	@RequestMapping(method=RequestMethod.GET)
+	/*@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Paciente>> findAll() {
 		List<Paciente> list = service.findAll();
 		return ResponseEntity.ok().body(list);
-	}
+	}*/
 	
 
 }
