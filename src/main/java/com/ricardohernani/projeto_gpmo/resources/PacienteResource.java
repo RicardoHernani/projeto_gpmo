@@ -26,22 +26,27 @@ public class PacienteResource {
 	@Autowired
 	private PacienteService service;	
 	
+	//Lista um paciente
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Paciente> find(@PathVariable Integer id) {
 		Paciente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	//Acrescentar um paciente
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Paciente obj){
+	public ResponseEntity<Void> insert( @RequestBody PacienteDTO objDto) {
+		Paciente obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
+	//Atualizar um paciente
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> uptade(@RequestBody Paciente obj, @PathVariable Integer id){
+	public ResponseEntity<Void> uptade (@RequestBody PacienteDTO objDto, @PathVariable Integer id){
+		Paciente obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj =  service.update(obj);
 		return ResponseEntity.noContent().build();
@@ -54,7 +59,7 @@ public class PacienteResource {
 	}
 	
 	
-	//Implementação com DTO
+	//Listando todos os pacientes e implementação com DTO
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<PacienteDTO>> findAll() {
 		List<Paciente> list = service.findAll();

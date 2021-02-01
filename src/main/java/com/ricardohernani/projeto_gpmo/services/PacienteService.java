@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
+import com.ricardohernani.projeto_gpmo.dto.PacienteDTO;
 import com.ricardohernani.projeto_gpmo.repositories.PacienteRepository;
 import com.ricardohernani.projeto_gpmo.services.exceptions.ObjectNotFoundException;
 
@@ -49,7 +50,8 @@ public class PacienteService {
 		return repo.findAll(pageRequest);
 	}
 	
-	
-	
-	
+	public Paciente fromDTO(PacienteDTO objDto) {
+		return new Paciente(objDto.getId(), objDto.getRegistro(), objDto.getData());
+	}
+		
 }

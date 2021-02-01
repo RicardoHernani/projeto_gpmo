@@ -21,8 +21,6 @@ public class Procedimento implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	
-	
 	private Integer tipo;
 	private Integer premio;
 	
@@ -58,7 +56,6 @@ public class Procedimento implements Serializable {
 		this.id = id;
 	}
 
-	
 
 	public TipoProcedimento getTipo() {
 		return TipoProcedimento.toEnum(tipo);

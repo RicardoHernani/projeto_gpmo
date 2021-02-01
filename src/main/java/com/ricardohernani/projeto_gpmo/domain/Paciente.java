@@ -21,6 +21,7 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	private Integer registro;
 	
 	@JsonFormat(pattern="dd/MM/yyyy")
