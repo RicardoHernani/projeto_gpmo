@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,7 @@ public class PacienteResource {
 	
 	//Acrescentar um paciente
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert( @RequestBody PacienteDTO objDto) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody PacienteDTO objDto) {
 		Paciente obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -45,7 +47,7 @@ public class PacienteResource {
 	
 	//Atualizar um paciente
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> uptade (@RequestBody PacienteDTO objDto, @PathVariable Integer id){
+	public ResponseEntity<Void> uptade (@Valid @RequestBody PacienteDTO objDto, @PathVariable Integer id){
 		Paciente obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj =  service.update(obj);
