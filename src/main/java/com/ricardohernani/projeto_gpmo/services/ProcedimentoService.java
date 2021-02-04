@@ -52,6 +52,6 @@ public class ProcedimentoService {
 	}
 	
 	public Procedimento fromDTO(ProcedimentoDTO objDto) {
-		return new Procedimento(objDto.getId(), null, null, null, null);
+		return new Procedimento(objDto.getId(), objDto.getTipo(), objDto.getPremio(), objDto.getPacientes(), objDto.getReferencias());
 	}
 }

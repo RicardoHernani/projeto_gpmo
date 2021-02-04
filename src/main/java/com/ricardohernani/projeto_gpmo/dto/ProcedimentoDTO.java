@@ -2,6 +2,7 @@ package com.ricardohernani.projeto_gpmo.dto;
 
 import java.io.Serializable;
 
+import com.ricardohernani.projeto_gpmo.domain.Paciente;
 import com.ricardohernani.projeto_gpmo.domain.Procedimento;
 import com.ricardohernani.projeto_gpmo.domain.Referencia;
 import com.ricardohernani.projeto_gpmo.domain.enums.PremioProcedimento;
@@ -15,6 +16,8 @@ public class ProcedimentoDTO implements Serializable {
 	private Integer premio;
 	
 	private Referencia referencias;
+	
+	private Paciente pacientes;
 		
 	public ProcedimentoDTO() {
 	}
@@ -24,6 +27,7 @@ public class ProcedimentoDTO implements Serializable {
 		tipo = obj.getTipo().getCod();
 		premio = obj.getPremio().getCod2();
 		referencias = obj.getReferencia();
+		pacientes = obj.getPaciente();
 	}
 
 	public Integer getId() {
@@ -56,6 +60,14 @@ public class ProcedimentoDTO implements Serializable {
 
 	public void setReferencias(Referencia referencias) {
 		this.referencias = referencias;
+	}
+
+	public Paciente getPacientes() {
+		return pacientes;
+	}
+
+	public void setPacientes(Paciente pacientes) {
+		this.pacientes = pacientes;
 	}
 
 	
