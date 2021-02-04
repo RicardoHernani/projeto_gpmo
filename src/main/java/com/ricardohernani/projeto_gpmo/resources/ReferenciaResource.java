@@ -17,9 +17,15 @@ public class ReferenciaResource {
 	@Autowired
 	private ReferenciaService service;	
 		
+	
+	//Lista uma referencia pelo código(id)
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Referencia> find(@PathVariable Integer id) {
 		Referencia obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	
+	
+	
+	
 }

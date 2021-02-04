@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.ricardohernani.projeto_gpmo.domain.Procedimento;
 import com.ricardohernani.projeto_gpmo.domain.Referencia;
+import com.ricardohernani.projeto_gpmo.domain.enums.PremioProcedimento;
+import com.ricardohernani.projeto_gpmo.domain.enums.TipoProcedimento;
 
 public class ProcedimentoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -17,7 +19,7 @@ public class ProcedimentoDTO implements Serializable {
 	public ProcedimentoDTO() {
 	}
 
-	public ProcedimentoDTO(Procedimento obj) {
+	public ProcedimentoDTO (Procedimento obj) {
 		id = obj.getId();
 		tipo = obj.getTipo().getCod();
 		premio = obj.getPremio().getCod2();
@@ -32,20 +34,20 @@ public class ProcedimentoDTO implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getTipo() {
-		return tipo;
+	public TipoProcedimento getTipo() {
+		return TipoProcedimento.toEnum(tipo);
 	}
 
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
+	public void setTipo(TipoProcedimento tipo) {
+		this.tipo = tipo.getCod();
 	}
 
-	public Integer getPremio() {
-		return premio;
+	public PremioProcedimento getPremio() {
+		return PremioProcedimento.toEnum(premio);
 	}
 
-	public void setPremio(Integer premio) {
-		this.premio = premio;
+	public void setPremio(PremioProcedimento premio) {
+		this.premio = premio.getCod2();
 	}
 
 	public Referencia getReferencias() {
@@ -57,8 +59,6 @@ public class ProcedimentoDTO implements Serializable {
 	}
 
 	
-	
-
 }
 
 
