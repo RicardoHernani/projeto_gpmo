@@ -1,8 +1,6 @@
 package com.ricardohernani.projeto_gpmo.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.ricardohernani.projeto_gpmo.domain.Procedimento;
 import com.ricardohernani.projeto_gpmo.domain.Referencia;
@@ -16,7 +14,7 @@ public class ProcedimentoDTO implements Serializable {
 	
 	
 	
-	private List<Referencia> referencias = new ArrayList<>();
+	private Referencia referencias;
 		
 	public ProcedimentoDTO() {
 	}
@@ -25,7 +23,7 @@ public class ProcedimentoDTO implements Serializable {
 		id = obj.getId();
 		tipo = obj.getTipo().getCod();
 		premio = obj.getPremio().getCod2();
-		//referencias = obj.getReferencias();
+		referencias = obj.getReferencia();
 	}
 
 	public Integer getId() {
@@ -52,13 +50,15 @@ public class ProcedimentoDTO implements Serializable {
 		this.premio = premio;
 	}
 
-	public List<Referencia> getReferencias() {
+	public Referencia getReferencias() {
 		return referencias;
 	}
 
-	public void setReferencias(List<Referencia> referencias) {
+	public void setReferencias(Referencia referencias) {
 		this.referencias = referencias;
 	}
+
+	
 	
 
 }
