@@ -7,12 +7,9 @@ package com.ricardohernani.projeto_gpmo.dto;
  é só excluir data e procedimentos do construtor e dos getters e setters*/
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
-import com.ricardohernani.projeto_gpmo.domain.Procedimento;
 
 public class PacienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,7 +22,7 @@ public class PacienteDTO implements Serializable {
 	
 	private Date data;
 	
-	private List<Procedimento> procedimentos = new ArrayList<>();
+	
 		
 	public PacienteDTO() {
 	}
@@ -34,7 +31,7 @@ public class PacienteDTO implements Serializable {
 		id = obj.getId();
 		registro = obj.getRegistro();
 		data = obj.getData();
-		procedimentos = obj.getProcedimentos();
+		
 	
 	}
 
@@ -62,13 +59,5 @@ public class PacienteDTO implements Serializable {
 		this.data = data;
 	}
 	
-	public List<Procedimento> getProcedimentos() {
-		return procedimentos;
-	}
-
-
-	public void setProcedimentos(List<Procedimento> procedimentos) {
-		this.procedimentos = procedimentos;
-	}
-
+	
 }

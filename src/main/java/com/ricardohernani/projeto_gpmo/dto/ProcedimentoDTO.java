@@ -12,8 +12,6 @@ public class ProcedimentoDTO implements Serializable {
 	private Integer tipo;
 	private Integer premio;
 	
-	
-	
 	private Referencia referencias;
 		
 	public ProcedimentoDTO() {
