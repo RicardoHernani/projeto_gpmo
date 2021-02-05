@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.ricardohernani.projeto_gpmo.domain.Paciente;
 import com.ricardohernani.projeto_gpmo.domain.Procedimento;
 import com.ricardohernani.projeto_gpmo.dto.ProcedimentoDTO;
 import com.ricardohernani.projeto_gpmo.repositories.ProcedimentoRepository;
@@ -33,8 +34,10 @@ public class ProcedimentoService {
 	}
 	
 	public Procedimento update(Procedimento obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Procedimento newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+		
 	}
 	
 	public void delete(Integer id) {
@@ -53,5 +56,11 @@ public class ProcedimentoService {
 	
 	public Procedimento fromDTO(ProcedimentoDTO objDto) {
 		return new Procedimento(objDto.getId(), objDto.getTipo(), objDto.getPremio(), objDto.getPacientes(), objDto.getReferencias());
+	}
+	
+	private void updateData(Procedimento newObj, Procedimento obj) {
+		newObj.setTipo(obj.getTipo());
+		newObj.setPremio(obj.getPremio());
+		
 	}
 }
