@@ -32,8 +32,9 @@ public class PacienteService {
 	}
 	
 	public Paciente update(Paciente obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Paciente newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
 	}
 	
 	public void delete(Integer id) {
@@ -52,6 +53,12 @@ public class PacienteService {
 	
 	public Paciente fromDTO(PacienteDTO objDto) {
 		return new Paciente(objDto.getId(), objDto.getRegistro(), objDto.getData());
+	}
+	
+	private void updateData(Paciente newObj, Paciente obj) {
+		newObj.setRegistro(obj.getRegistro());
+		newObj.setData(obj.getData());
+		
 	}
 		
 }

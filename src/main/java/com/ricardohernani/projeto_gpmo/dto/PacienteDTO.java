@@ -9,8 +9,6 @@ package com.ricardohernani.projeto_gpmo.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
-
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
 
 public class PacienteDTO implements Serializable {
@@ -19,7 +17,7 @@ public class PacienteDTO implements Serializable {
 	
 	private Integer id;
 	
-	@NotNull (message="Não pode ser nulo")
+	//@NotNull (message="Não pode ser nulo")
 	private Integer registro;
 	
 	
@@ -32,8 +30,6 @@ public class PacienteDTO implements Serializable {
 		id = obj.getId();
 		registro = obj.getRegistro();
 		data = obj.getData();
-		
-	
 	}
 
 	public Integer getId() {
