@@ -24,8 +24,6 @@ public class PacienteDTO implements Serializable {
 	
 	
 	private Date data;
-	
-	
 		
 	public PacienteDTO() {
 	}
