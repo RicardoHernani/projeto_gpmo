@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ricardohernani.projeto_gpmo.domain.Paciente;
 import com.ricardohernani.projeto_gpmo.dto.PacienteDTO;
+import com.ricardohernani.projeto_gpmo.dto.PacienteNewDTO;
 import com.ricardohernani.projeto_gpmo.services.PacienteService;
 
 @RestController
@@ -37,7 +38,7 @@ public class PacienteResource {
 	
 	//Acrescentar um paciente
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody PacienteDTO objDto) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody PacienteNewDTO objDto) {
 		Paciente obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
