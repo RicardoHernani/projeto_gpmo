@@ -3,8 +3,6 @@ package com.ricardohernani.projeto_gpmo.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.ricardohernani.projeto_gpmo.domain.Referencia;
-
 public class PacienteNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -17,7 +15,7 @@ public class PacienteNewDTO implements Serializable {
 	private Integer codigo;
 	
 	
-	private Referencia referencia;
+	
 	
 	PacienteNewDTO() {
 	}
@@ -63,16 +61,7 @@ public class PacienteNewDTO implements Serializable {
 	}
 
 
-	public Referencia getReferencia() {
-		return referencia;
-	}
-
-
-	public void setReferencia(Referencia referencia) {
-		this.referencia = referencia;
-	}
-
-
+	
 	public Integer getCodigo() {
 		return codigo;
 	}
